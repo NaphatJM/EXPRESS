@@ -1,9 +1,10 @@
 from fastapi import FastAPI, Request
-from express.routers.v1 import items
+
+# we import routers that has __init__.py that contain router(routers)
+from express import routers
 
 app = FastAPI()
-app.include_router(items.router, prefix="/v1")
-# we can prefix both either main or routers , even tag=[''] is writeable
+app.include_router(routers.router, prefix="/layer1")
 
 
 @app.get("/")

@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from fastapi import APIRouter  #!!!
 
-router = APIRouter(prefix="/items", tags=["items"])
+router = APIRouter(prefix="/v1/items", tags=["items"])
 # we can use prefix to prefixed the url path
 
 
