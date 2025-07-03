@@ -1,32 +1,43 @@
 from pydantic import BaseModel
-from fastapi import APIRouter  #!!!
+from fastapi import APIRouter
 
 router = APIRouter(prefix="/v1/items", tags=["items"])
-# we can use prefix to prefixed the url path
 
 
 class Item(BaseModel):
-    name: str
-    cost: float
-    is_offer: bool = False
+    id: int
+    sender_id: int
+    receiver_id: int
+    description: str
+    weight_kg: float
+    is_fragile: bool = False
+    delivery_type: str = "standard"
 
 
-# change @app to @router
 @router.get("/{item_id}")
-async def read_item(item_id: int, q: str | None = None) -> Item:
-    return {"item_id": item_id, "q": q}
+def read_item(item_id: int):
+    # Mock return of an item
+    return {
+        "id": item_id,
+        "sender_id": 1,
+        "receiver_id": 2,
+        "description": "Sample item",
+        "weight_kg": 1.5,
+        "is_fragile": False,
+        "delivery_type": "standard",
+    }
 
 
 @router.post("")
-async def create_item(item: Item):
-    return {"item": item}
+def create_item(item: Item):
+    return item
 
 
 @router.put("/{item_id}")
-async def update_item(item_id: int, item: Item):
+def update_item(item_id: int, item: Item):
     return item
 
 
 @router.delete("/{item_id}")
-async def delete_item(item_id: int):
+def delete_item(item_id: int):
     return {"message": f"Item with ID {item_id} has been deleted"}

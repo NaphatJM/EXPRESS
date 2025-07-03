@@ -6,6 +6,7 @@ router = APIRouter(prefix="/v1/receivers", tags=["reciever"])
 
 # define Pydantic model for request/response body
 class Receiver(BaseModel):
+    id: int
     name: str
     phone: str
     address: str
@@ -14,7 +15,7 @@ class Receiver(BaseModel):
 
 # GET /v1/receivers/{receiver_id}
 @router.get("/{receiver_id}")
-async def read_receiver(receiver_id: int, q: str | None = None) -> Receiver:
+def read_receiver(receiver_id: int, q: str | None = None) -> Receiver:
     return {
         "name": f"Receiver #{receiver_id}",
         "phone": "0812345678",
@@ -25,17 +26,17 @@ async def read_receiver(receiver_id: int, q: str | None = None) -> Receiver:
 
 # POST /v1/receivers
 @router.post("")
-async def create_receiver(receiver: Receiver):
+def create_receiver(receiver: Receiver):
     return {"message": "Receiver created", "receiver": receiver}
 
 
 # PUT /v1/receivers/{receiver_id}
 @router.put("/{receiver_id}")
-async def update_receiver(receiver_id: int, receiver: Receiver):
+def update_receiver(receiver_id: int, receiver: Receiver):
     return {"message": f"Receiver {receiver_id} updated", "receiver": receiver}
 
 
 # DELETE /v1/receivers/{receiver_id}
 @router.delete("/{receiver_id}")
-async def delete_receiver(receiver_id: int):
+def delete_receiver(receiver_id: int):
     return {"message": f"Receiver with ID {receiver_id} has been deleted"}
