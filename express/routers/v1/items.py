@@ -35,7 +35,7 @@ def create_item(item: Item):
 
 @router.put("/{item_id}")
 def update_item(item_id: int, item: Item):
-    return item
+    return {"message": f"Item with ID {item_id} has been updated", "item": item}
 
 
 @router.delete("/{item_id}")

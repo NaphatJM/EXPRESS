@@ -35,7 +35,10 @@ def create_shipment(shipment: Shipment):
 
 @router.put("/{shipment_id}")
 def update_shipment(shipment_id: int, shipment: Shipment):
-    return shipment
+    return {
+        "message": f"Shipment with ID {shipment_id} has been updated",
+        "shipment": shipment,
+    }
 
 
 @router.delete("/{shipment_id}")

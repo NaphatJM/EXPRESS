@@ -32,7 +32,10 @@ def create_sender(sender: Sender):
 # Update
 @router.put("/{sender_id}")
 def update_sender(sender_id: int, sender: Sender):
-    return sender
+    return {
+        "message": f"Sender with ID {sender_id} has been updated",
+        "sender": sender,
+    }
 
 
 # Delete

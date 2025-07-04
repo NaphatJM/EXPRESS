@@ -7,7 +7,7 @@ It focuses on learning how to build a backend using **Python**, **FastAPI**, and
 
 - Understand backend development concepts
 - Create RESTful APIs using FastAPI
-- Connect to a PostgreSQL database
+- Connect to a PostgreSQL database using SQLAlchemy ORM
 - Use modern Python tooling with Poetry
 - Prepare backend APIs for mobile app integration
 

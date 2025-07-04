@@ -31,7 +31,7 @@ def create_deliverystaff(staff: DeliveryStaff):
 
 @router.put("/{staff_id}")
 def update_deliverystaff(staff_id: int, staff: DeliveryStaff):
-    return staff
+    return {"message": f"DeliveryStaff with id {staff_id} updated", "staff": staff}
 
 
 @router.delete("/{staff_id}")
